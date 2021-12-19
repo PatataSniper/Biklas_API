@@ -1,0 +1,5 @@
+IF NOT EXISTS (select * from INFORMATION_SCHEMA.KEY_COLUMN_USAGE where CONSTRAINT_NAME = 'PK_Amigos')
+BEGIN 
+    ALTER TABLE dbo.Amigos with nocheck
+    ADD CONSTRAINT PK_Amigos PRIMARY KEY (IdUsuario, IdAmigo)
+END
