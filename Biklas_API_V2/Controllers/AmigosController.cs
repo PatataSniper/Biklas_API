@@ -30,6 +30,7 @@ namespace Biklas_API_V2.Controllers
                     id = amigo.IdAmigo,
                     nombre = amigo.Usuarios1.Nombre,
                     apellidos = amigo.Usuarios1.Apellidos,
+                    nombreUsuario = amigo.Usuarios1.NombreUsuario,
                     fechaNacimiento = amigo.Usuarios1.FechaNacimiento,
                     kmRecorridos = amigo.Usuarios1.KmRecorridos,
                     amigosDesde = amigo.FechaRelacion

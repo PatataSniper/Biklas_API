@@ -11,9 +11,40 @@ namespace Biklas_API_V2.Controllers
     public class UsuariosController : BKBaseApiController
     {
         // GET api/<controller>
-        public IHttpActionResult Get()
+        /// <summary>
+        /// Devuelve al cliente la lista de usuarios almacenados en la BD.
+        /// Se puede especificar el id del usuario que realiza la búsqueda,
+        /// dicho usuario se excluye de los resultados. También se puede 
+        /// especificar un texto de búsqueda el cual se usará como filtro
+        /// para obtener los resultados.
+        /// </summary>
+        /// <param name="idUsuario">El id del usuario que realiza la búsqueda</param>
+        /// <param name="busqueda">El texto de búsqueda de usuarios</param>
+        /// <returns></returns>
+        public IHttpActionResult Get(int? idUsuario = null, string busqueda = null)
         {
-            List<Usuarios> usuarios = db.Usuarios.ToList();
+            IEnumerable<Usuarios> usuarios = db.Usuarios;
+
+            if(idUsuario != null)
+            {
+                // Se especificó un usuario de búsqueda, dicho usuario se
+                // excluye de los resultados...
+                usuarios = usuarios.Where(u => u.IdUsuario != idUsuario);
+            }
+
+            if(busqueda != null && !string.IsNullOrWhiteSpace(busqueda))
+            {
+                // Se especificó un texto de búsqueda, se utilizará como 
+                // filtro para obtener los resultados. Las columnas de los
+                // usuarios involucradas en la búsqueda son:
+                // Nombre
+                // Apellidos
+                // Nombre de usuario
+                usuarios = usuarios.Where(u => u.Nombre.Contains(busqueda) 
+                    || u.Apellidos.Contains(busqueda)
+                    || u.NombreUsuario.Contains(busqueda));
+            }
+
             List<object> result = new List<object>();
             result.AddRange(usuarios.Select(u => new
             {
@@ -23,7 +54,8 @@ namespace Biklas_API_V2.Controllers
                 u.NombreUsuario,
                 u.Contraseña,
                 u.CorreoElectronico,
-                u.IdRol
+                u.IdRol,
+                u.KmRecorridos
             }));
 
             return Json(result);
