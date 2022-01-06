@@ -13,26 +13,23 @@ namespace Biklas_API_V2.Controllers
         // GET api/<controller>
         /// <summary>
         /// Devuelve al cliente la lista de usuarios almacenados en la BD.
-        /// Se puede especificar el id del usuario que realiza la búsqueda,
+        /// Se debe especificar el id del usuario que realiza la búsqueda,
         /// dicho usuario se excluye de los resultados. También se puede 
         /// especificar un texto de búsqueda el cual se usará como filtro
         /// para obtener los resultados.
         /// </summary>
         /// <param name="idUsuario">El id del usuario que realiza la búsqueda</param>
-        /// <param name="busqueda">El texto de búsqueda de usuarios</param>
+        /// <param name="textoBusqueda">El texto de búsqueda de usuarios</param>
         /// <returns></returns>
-        public IHttpActionResult Get(int? idUsuario = null, string busqueda = null)
+        public IHttpActionResult Get(int idUsuario, string textoBusqueda = null)
         {
-            IEnumerable<Usuarios> usuarios = db.Usuarios;
+            // La búsqueda se estandariza a minúsculas
+            textoBusqueda = textoBusqueda?.ToLower();
 
-            if(idUsuario != null)
-            {
-                // Se especificó un usuario de búsqueda, dicho usuario se
-                // excluye de los resultados...
-                usuarios = usuarios.Where(u => u.IdUsuario != idUsuario);
-            }
+            // El usuario de búsqueda se excluye de los resultados...
+            IEnumerable<Usuarios> usuarios = db.Usuarios.Where(u => u.IdUsuario != idUsuario);
 
-            if(busqueda != null && !string.IsNullOrWhiteSpace(busqueda))
+            if (textoBusqueda != null && !string.IsNullOrWhiteSpace(textoBusqueda))
             {
                 // Se especificó un texto de búsqueda, se utilizará como 
                 // filtro para obtener los resultados. Las columnas de los
@@ -40,22 +37,25 @@ namespace Biklas_API_V2.Controllers
                 // Nombre
                 // Apellidos
                 // Nombre de usuario
-                usuarios = usuarios.Where(u => u.Nombre.Contains(busqueda) 
-                    || u.Apellidos.Contains(busqueda)
-                    || u.NombreUsuario.Contains(busqueda));
+                usuarios = usuarios.Where(u => u.Nombre.ToLower().Contains(textoBusqueda)
+                    || u.NombreUsuario.ToLower().Contains(textoBusqueda)
+                    || u.Apellidos?.ToLower().Contains(textoBusqueda) == true);
             }
 
             List<object> result = new List<object>();
             result.AddRange(usuarios.Select(u => new
             {
-                u.IdUsuario,
-                u.Nombre,
-                u.Apellidos,
-                u.NombreUsuario,
-                u.Contraseña,
-                u.CorreoElectronico,
-                u.IdRol,
-                u.KmRecorridos
+                idUsuario = u.IdUsuario,
+                nombre = u.Nombre,
+                apellidos = u.Apellidos,
+                nombreUsuario = u.NombreUsuario,
+                contraseña = u.Contraseña,
+                correoElectronico = u.CorreoElectronico,
+                idRol = u.IdRol,
+                kmRecorridos = u.KmRecorridos,
+
+                // Indicamos si es que ambos usuarios son amigos
+                sonAmigos = u.SonAmigos(u.IdUsuario)
             }));
 
             return Json(result);
