@@ -29,7 +29,7 @@ namespace Biklas_API_V2.Controllers
             // El usuario de búsqueda se excluye de los resultados...
             IEnumerable<Usuarios> usuarios = db.Usuarios.Where(u => u.IdUsuario != idUsuario);
 
-            if (textoBusqueda != null && !string.IsNullOrWhiteSpace(textoBusqueda))
+            if (!string.IsNullOrWhiteSpace(textoBusqueda))
             {
                 // Se especificó un texto de búsqueda, se utilizará como 
                 // filtro para obtener los resultados. Las columnas de los
