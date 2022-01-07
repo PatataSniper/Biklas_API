@@ -4,8 +4,8 @@ select * from Usuarios
 INSERT INTO Usuarios (IdUsuario, Nombre, Contraseña, KmRecorridos,
 	Apellidos, NombreUsuario, FechaNacimiento, FechaRegistro,
 	CorreoElectronico, IdRol)
-	VALUES (3, 'Andres', 'Contra3', 568, 'De la peña', 'Sgt0pimienta', '1999-11-23',
-	'2020-05-18', 'andres@gmail.com', 1)
+	VALUES (4, 'Oswaldo', 'Contra4', 1390, 'Castillo', 'OswCas', '1992-11-23',
+	'2021-05-02', 'oswcas@gmail.com', 1)
 
 select * from Amigos
 -- Creamos relaciones de amigos entre usuarios, una relación de amistad debe
