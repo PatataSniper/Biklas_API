@@ -26,15 +26,7 @@ namespace Biklas_API_V2.Models
         /// <returns></returns>
         internal bool SonAmigos(int idUsuario)
         {
-            if(Amigos.Any(a => a.IdUsuario == idUsuario))
-            {
-                // El usuario especificado SI es amigo del usuario actual
-                return true;
-            }
-
-            // No se encontró relación entre el usuario especificado y el
-            // usuario actual
-            return false;
+            return Amigos.Any(a => a.IdUsuario == idUsuario);
         }
     }
 }
