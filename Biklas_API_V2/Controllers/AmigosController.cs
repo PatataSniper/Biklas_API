@@ -18,7 +18,7 @@ namespace Biklas_API_V2.Controllers
 
             // Return the related friends as response
             List<object> listAmigos = new List<object>();
-            foreach(Amigos amigo in usr.Amigos)
+            foreach (Amigos amigo in usr.Amigos)
             {
                 // We parse the friends and related users objects to 
                 // anonimous objects to avoid an infinite loop. The name
@@ -37,7 +37,70 @@ namespace Biklas_API_V2.Controllers
                 });
             }
 
-            return Json( listAmigos );
+            return Json(listAmigos);
+        }
+
+        [HttpDelete]
+        [ActionName("EliminarAmigo")]
+        public IHttpActionResult EliminarAmigo(Amigos relacion)
+        {
+            try
+            {
+                // Obtenemos los identificadores de relación del objeto recibido como parámetro
+                int idUsuario = relacion.IdUsuario;
+                int idAmigo = relacion.IdAmigo;
+
+                // Obtenemos la relaciones de amistad entre ambos usuarios
+                List<Amigos> relaciones = db.Amigos
+                    .Where(a => a.IdUsuario == idUsuario && a.IdAmigo == idAmigo
+                    || a.IdUsuario == idAmigo && a.IdAmigo == idUsuario)
+                    .ToList();
+
+                // Las eliminamos de la base de datos
+                db.Amigos.RemoveRange(relaciones);
+                if (db.SaveChanges() > 0)
+                {
+                    return Json(true);
+                }
+
+                throw new Exception("Error al actualizar las entradas en la base de datos");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpPut]
+        [ActionName("AgregarAmigo")]
+        public IHttpActionResult AgregarAmigo(Amigos relacion)
+        {
+            try
+            {
+                // Obtenemos los identificadores de relación del objeto recibido como parámetro
+                int idUsuario = relacion.IdUsuario;
+                int idAmigo = relacion.IdAmigo;
+
+                // Creamos y agregamos la relación de amistad entre ambos usuarios
+                db.Amigos.AddRange(new List<Amigos>()
+                {
+                    // Dos registros, la relación es bilateral. El constructor configura la 
+                    // fecha de creación
+                    new Amigos(idUsuario, idAmigo),
+                    new Amigos(idAmigo, idUsuario)
+                });
+
+                if (db.SaveChanges() > 0)
+                {
+                    return Json(true);
+                }
+
+                throw new Exception("Error al actualizar las entradas en la base de datos");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
     }
 }

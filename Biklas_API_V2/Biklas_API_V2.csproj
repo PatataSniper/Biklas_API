@@ -188,6 +188,7 @@
     <Compile Include="Models\Amigos.cs">
       <DependentUpon>BiklasModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AmigosExt.cs" />
     <Compile Include="Models\Aristas.cs">
       <DependentUpon>BiklasModel.tt</DependentUpon>
     </Compile>
