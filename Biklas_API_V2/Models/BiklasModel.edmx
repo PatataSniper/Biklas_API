@@ -522,8 +522,8 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
             <PropertyRef Name="IdVertice" />
           </Key>
           <Property Name="IdVertice" Type="Int32" Nullable="false" />
-          <Property Name="PosicionX" Type="Decimal" Precision="9" Scale="6" />
-          <Property Name="PosicionY" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="PosicionX" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="PosicionY" Type="Decimal" Precision="9" Scale="6" Nullable="false" />
           <NavigationProperty Name="Aristas" Relationship="Self.FK_Aristas_Vertice_Final" FromRole="Vertices" ToRole="Aristas" />
           <NavigationProperty Name="Aristas1" Relationship="Self.FK_Aristas_Vertice_Inicial" FromRole="Vertices" ToRole="Aristas" />
           <NavigationProperty Name="Rutas" Relationship="BiklasModel.FK__Rutas__IdVertice__01142BA1" FromRole="Vertices" ToRole="Rutas" />

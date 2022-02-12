@@ -24,8 +24,8 @@ namespace Biklas_API_V2.Models
         }
     
         public int IdVertice { get; set; }
-        public Nullable<decimal> PosicionX { get; set; }
-        public Nullable<decimal> PosicionY { get; set; }
+        public decimal PosicionX { get; set; }
+        public decimal PosicionY { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aristas> Aristas { get; set; }
