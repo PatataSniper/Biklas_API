@@ -19,6 +19,7 @@ namespace Biklas_API_V2.Models
         {
             this.Amigos = new HashSet<Amigos>();
             this.Amigos1 = new HashSet<Amigos>();
+            this.Rutas = new HashSet<Rutas>();
         }
     
         public int IdUsuario { get; set; }
@@ -37,5 +38,7 @@ namespace Biklas_API_V2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Amigos> Amigos1 { get; set; }
         public virtual Roles Roles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rutas> Rutas { get; set; }
     }
 }

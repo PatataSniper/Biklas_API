@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="BiklasModel.Aristas" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="BiklasModel.Entidades" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BiklasModel.Roles" Width="1.5" PointX="10.25" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BiklasModel.Rutas" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BiklasModel.Segmentos" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BiklasModel.Usuarios" Width="1.5" PointX="12.5" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="BiklasModel.Vertices" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
@@ -27,8 +26,12 @@
         <AssociationConnector Association="BiklasModel.FK_Aristas_Vias" ManuallyRouted="false" />
         <AssociationConnector Association="BiklasModel.FK_Segmentos_Aristas" ManuallyRouted="false" />
         <AssociationConnector Association="BiklasModel.FK_Usuarios_Roles" ManuallyRouted="false" />
-        <AssociationConnector Association="BiklasModel.FK_Segmentos_Rutas" ManuallyRouted="false" />
         <AssociationConnector Association="BiklasModel.Permisos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BiklasModel.Rutas" Width="1.5" PointX="14.75" PointY="1.5" />
+        <AssociationConnector Association="BiklasModel.FK__Rutas__IdUsuario__02FC7413" />
+        <AssociationConnector Association="BiklasModel.FK__Rutas__IdVertice__01142BA1" />
+        <AssociationConnector Association="BiklasModel.FK__Rutas__IdVertice__02084FDA" />
+        <AssociationConnector Association="BiklasModel.FK_Segmentos_Rutas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -21,8 +21,8 @@ namespace Biklas_API_V2.Controllers
             foreach (Amigos amigo in usr.Amigos)
             {
                 // We parse the friends and related users objects to 
-                // anonimous objects to avoid an infinite loop. The name
-                // of the anonimous object properties should match the
+                // anonymous objects to avoid an infinite loop. The name
+                // of the anonymous object properties should match the
                 // names declared in the interface 'amigo' in the file
                 // 'amigos-context.ts' (client).
                 listAmigos.Add(new
