@@ -36,7 +36,7 @@ namespace Biklas_API_V2.Controllers
                     id = r.IdRuta,
                     nombre = r.Nombre,
                     distancia = "10 km",
-                    fechaUltRecor = "07/02/2022"
+                    fechaCreacion = r.FechaCreacion.Date.ToString()
                 }));
             }
             catch (Exception ex)

@@ -84,11 +84,10 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
           </Key>
           <Property Name="IdRuta" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="TiempoInicio" Type="datetimeoffset" Precision="0" />
-          <Property Name="TiempoFin" Type="datetimeoffset" Precision="7" />
           <Property Name="IdVerticeInicial" Type="int" Nullable="false" />
           <Property Name="IdVerticeFinal" Type="int" Nullable="false" />
           <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Segmentos">
           <Key>
@@ -119,8 +118,8 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
             <PropertyRef Name="IdVertice" />
           </Key>
           <Property Name="IdVertice" Type="int" Nullable="false" />
-          <Property Name="PosicionX" Type="decimal" Precision="9" Scale="6" />
-          <Property Name="PosicionY" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="PosicionX" Type="decimal" Precision="9" Scale="6" Nullable="false" />
+          <Property Name="PosicionY" Type="decimal" Precision="9" Scale="6" Nullable="false" />
         </EntityType>
         <EntityType Name="Vias">
           <Key>
@@ -528,7 +527,7 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
           <NavigationProperty Name="Aristas1" Relationship="Self.FK_Aristas_Vertice_Inicial" FromRole="Vertices" ToRole="Aristas" />
           <NavigationProperty Name="Rutas" Relationship="BiklasModel.FK__Rutas__IdVertice__01142BA1" FromRole="Vertices" ToRole="Rutas" />
           <NavigationProperty Name="Rutas1" Relationship="BiklasModel.FK__Rutas__IdVertice__02084FDA" FromRole="Vertices" ToRole="Rutas" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="Vias">
           <Key>
             <PropertyRef Name="IdVia" />
@@ -734,18 +733,17 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
             <End Role="Rutas" EntitySet="Rutas" />
             <End Role="Segmentos" EntitySet="Segmentos" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Rutas">
           <Key>
             <PropertyRef Name="IdRuta" />
           </Key>
           <Property Name="IdRuta" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TiempoInicio" Type="DateTimeOffset" Precision="0" />
-          <Property Name="TiempoFin" Type="DateTimeOffset" Precision="7" />
           <Property Name="IdVerticeInicial" Type="Int32" Nullable="false" />
           <Property Name="IdVerticeFinal" Type="Int32" Nullable="false" />
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Usuarios" Relationship="BiklasModel.FK__Rutas__IdUsuario__02FC7413" FromRole="Rutas" ToRole="Usuarios" />
           <NavigationProperty Name="Vertices" Relationship="BiklasModel.FK__Rutas__IdVertice__01142BA1" FromRole="Rutas" ToRole="Vertices" />
           <NavigationProperty Name="Vertices1" Relationship="BiklasModel.FK__Rutas__IdVertice__02084FDA" FromRole="Rutas" ToRole="Vertices" />
@@ -799,7 +797,7 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -928,11 +926,10 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
           <EntitySetMapping Name="Rutas">
             <EntityTypeMapping TypeName="BiklasModel.Rutas">
               <MappingFragment StoreEntitySet="Rutas">
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdVerticeFinal" ColumnName="IdVerticeFinal" />
                 <ScalarProperty Name="IdVerticeInicial" ColumnName="IdVerticeInicial" />
-                <ScalarProperty Name="TiempoFin" ColumnName="TiempoFin" />
-                <ScalarProperty Name="TiempoInicio" ColumnName="TiempoInicio" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="IdRuta" ColumnName="IdRuta" />
               </MappingFragment>

@@ -26,23 +26,23 @@ select * from Usuarios
 
 -- Generamos la primera ruta de prueba manualmente
 -- Insertamos vértices
-INSERT INTO Vertices VALUES (1, 20.700346, -103.330336)
-INSERT INTO Vertices VALUES (2, 20.699594, -103.330786)
+INSERT INTO Vertices VALUES (3, 20.801250, -103.251589)
+INSERT INTO Vertices VALUES (4, 20.809582, -103.256821)
 -- DELETE Vertices WHERE IdVertice IN (1, 2)
 
 -- Insertamos vias
-INSERT INTO Vias VALUES (1, 'Monte Atlas')
+INSERT INTO Vias VALUES (2, 'Vía de prueba')
 
 -- Insertamos aristas
-INSERT INTO Aristas VALUES (1, 1, NULL, 0, 1, 2, 1)
+INSERT INTO Aristas VALUES (2, 2, 2, 1, 3, 4, 2)
 -- DELETE Aristas WHERE IdArista = 1
 
 -- Insertamos ruta
-INSERT INTO Rutas VALUES(1, 'Ruta de prueba', '05-02-2021', '05-02-2021', 1, 2, 1)
+INSERT INTO Rutas VALUES(2, 'Ruta de prueba 2', 3, 4, 1, '02-18-2021')
 -- DELETE Rutas WHERE IdRuta = 1
 
 -- Insertamos segmentos de ruta
-INSERT INTO Segmentos VALUES (1, 1, 1, 1)
+INSERT INTO Segmentos VALUES (2, 1, 2, 2)
 -- DELETE Segmentos WHERE IdSegmento = 1
 
 SELECT ru.Nombre, ar.Bidireccional, ar.NumeroCarriles1, ar.NumeroCarriles2, vi.Nombre as Nombre_Via, verI.PosicionX as X_Inicial,

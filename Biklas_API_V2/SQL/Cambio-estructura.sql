@@ -117,6 +117,14 @@ BEGIN
 	ADD IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario)
 END
 
+-- Agregamos fecha de creación de ruta
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Rutas' 
+	AND COLUMN_NAME = 'FechaCreacion')
+BEGIN 
+	ALTER TABLE dbo.Rutas
+	ADD FechaCreacion DATE NOT NULL 
+END
+
 ---------------------------------------------------------------------
 -- Limpiamos procedimientos almacenados. Insertar scripts nuevos arriba de esta línea
 DROP PROCEDURE #EsTipoDeColumna

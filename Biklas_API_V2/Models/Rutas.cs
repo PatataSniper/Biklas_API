@@ -22,11 +22,10 @@ namespace Biklas_API_V2.Models
     
         public int IdRuta { get; set; }
         public string Nombre { get; set; }
-        public Nullable<System.DateTimeOffset> TiempoInicio { get; set; }
-        public Nullable<System.DateTimeOffset> TiempoFin { get; set; }
         public int IdVerticeInicial { get; set; }
         public int IdVerticeFinal { get; set; }
         public int IdUsuario { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
     
         public virtual Usuarios Usuarios { get; set; }
         public virtual Vertices Vertices { get; set; }
