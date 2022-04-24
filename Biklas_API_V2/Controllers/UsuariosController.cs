@@ -1,4 +1,5 @@
 ﻿using Biklas_API_V2.Models;
+using Biklas_API_V2.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace Biklas_API_V2.Controllers
                 kmRecorridos = u.KmRecorridos,
 
                 // Indicamos si es que ambos usuarios son amigos
-                sonAmigos = u.SonAmigos(u.IdUsuario)
+                sonAmigos = u.SonAmigos(idUsuario)
             }));
 
             return Json(result);
@@ -86,8 +87,27 @@ namespace Biklas_API_V2.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [HttpPost]
+        public IHttpActionResult Post(Usuarios nuevoUsuario)
         {
+            try
+            {
+                // Normalizamos información de creación de usuario
+                nuevoUsuario.NormalizarDatosCreacion(db);
+                db.Usuarios.Add(nuevoUsuario);
+
+                // Iniciamos proceso de guardado en BD
+                if (db.SaveChanges() > 0)
+                {
+                    return Json(true);
+                }
+
+                throw new Exception("Error al crear usuario en la base de datos");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // PUT api/<controller>/5
@@ -143,6 +163,30 @@ namespace Biklas_API_V2.Controllers
 
                 // Contraseña inválida, fallo en el inicio de sesión
                 throw new Exception("Contraseña incorrecta");
+            }
+            catch (Exception ex)
+            {
+                return Json(new { err = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult RecuperarContrasenia(string correo)
+        {
+            try
+            {
+                // Obtenemos el email del usuario relacionado
+                Usuarios usr = db.Usuarios.FirstOrDefault(u => u.CorreoElectronico == correo);
+
+                if(usr == null)
+                {
+                    // Correo no relacionado a ningún usuario en la base de datos
+                    throw new Exception("El correo no pertenece a ningún usuario");
+                }
+
+                // Enviamos correo de recuperación de contraseña al usuario
+                ComunicadorCorreo.EnviarCorreoRecuperacionContra(usr);
+                return Json(true);
             }
             catch (Exception ex)
             {

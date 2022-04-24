@@ -503,7 +503,7 @@ advertencia 6002: La tabla o vista 'Biklas.dbo.Permisos' no tiene definida ningu
           </Key>
           <Property Name="IdUsuario" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="KmRecorridos" Type="Decimal" Precision="9" Scale="1" Nullable="false" />
           <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />

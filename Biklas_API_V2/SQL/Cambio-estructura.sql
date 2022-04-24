@@ -117,6 +117,14 @@ BEGIN
 	ADD IdUsuario INT NOT NULL FOREIGN KEY REFERENCES Usuarios(IdUsuario)
 END
 
+-- Aumentamos el tamaño del campo para poder almacenar la contraseña encriptada de 128 bytes
+IF NOT EXISTS (SELECT COL_LENGTH('Usuarios','Contraseña')
+	HAVING COL_LENGTH('Usuarios','Contraseña') = 128)
+	BEGIN
+	ALTER TABLE dbo.Usuarios
+	ALTER COLUMN Contraseña VARCHAR(128)
+	END
+
 -- Agregamos fecha de creación de ruta
 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Rutas' 
 	AND COLUMN_NAME = 'FechaCreacion')

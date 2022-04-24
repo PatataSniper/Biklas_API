@@ -29,8 +29,8 @@ namespace Biklas_API_V2.Controllers
 
                 // Devuelve las rutas relacionadas. Convertimos las rutas a objetos 
                 // anónimos para evitar ciclos infinitos. El nombre de las propiedades
-                // de los objetos anónimos deberán cuadrar con los nombre declarados en 
-                // la interfaz 'ruta' en el archivo '' (cliente)
+                // de los objetos anónimos deberán cuadrar con los nombres las propiedades
+                // declaradas en el cliente
                 return Json(usr.Rutas.Select(r => new
                 {
                     id = r.IdRuta,
