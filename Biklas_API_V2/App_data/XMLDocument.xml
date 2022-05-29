@@ -502,6 +502,12 @@
             <param name="contra">La contraseña del usuario</param>
             <returns>Información del usuario existente en la BD</returns>
         </member>
+        <member name="M:Biklas_API_V2.Models.Rutas.Coordenadas">
+            <summary>
+            Devuelve el conjunto de cordenadas (x,y) que describen la ruta
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String)">
             <summary>
             Validamos que la contraseña recibida como parámetro, sea igual a la contraseña

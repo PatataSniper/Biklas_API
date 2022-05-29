@@ -48,8 +48,11 @@ INSERT INTO Rutas VALUES(2, 'Ruta de prueba 2', 3, 4, 1, '02-18-2021')
 INSERT INTO Segmentos VALUES (3, 2, 3, 1)
 -- DELETE Segmentos WHERE IdSegmento = 1
 
-SELECT ru.IdRuta, ru.Nombre, us.NombreUsuario, ar.Bidireccional, ar.NumeroCarriles1, ar.NumeroCarriles2, vi.Nombre as Nombre_Via, verI.IdVertice as Id_V_Inicial, verI.PosicionX as X_Inicial,
-	verI.PosicionY as Y_Inicial, verF.IdVertice as Id_V_Final, verF.PosicionX as X_Final, verF.PosicionY as Y_Final FROM Rutas AS ru
+SELECT ru.IdRuta, ru.Nombre, us.NombreUsuario, se.Posicion, ar.Bidireccional, ar.NumeroCarriles1, 
+	ar.NumeroCarriles2, vi.Nombre as Nombre_Via, verI.IdVertice as Id_V_Inicial, 
+	verI.PosicionX as X_Inicial, verI.PosicionY as Y_Inicial, verF.IdVertice as Id_V_Final, 
+	verF.PosicionX as X_Final, verF.PosicionY as Y_Final 
+	FROM Rutas AS ru
 	inner join Segmentos AS se on se.IdRuta = ru.IdRuta
 	inner join Aristas AS ar on ar.IdArista = se.IdArista
 	inner join Vias as vi on vi.IdVia = ar.IdVia
