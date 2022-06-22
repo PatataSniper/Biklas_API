@@ -1,5 +1,6 @@
 ﻿using Biklas_API_V2.Models;
-using Biklas_API_V2.Services;
+using ComunicadorCorreoServicio;
+using EncriptadorServicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -195,7 +196,8 @@ namespace Biklas_API_V2.Controllers
                 }
 
                 // Enviamos correo de recuperación de contraseña al usuario
-                _comunicadorCorreo.EnviarCorreoRecuperacionContra(usr);
+                _comunicadorCorreo.EnviarCorreoRecuperacionContra(usr.CorreoElectronico, usr.Contraseña,
+                    Credenciales.CORREO_ELECTRONICO_COM, Credenciales.CONTRA_CORREO_ELECTRONICO_COM);
                 return Json(true);
             }
             catch (Exception ex)

@@ -5,7 +5,7 @@ using System.IO;
 using OsmSharp;
 using System.Diagnostics;
 
-namespace Biklas_API_V2.Services
+namespace CalculadorRutaServicio
 {
     public class CalculadorRuta : ICalculadorRuta
     {

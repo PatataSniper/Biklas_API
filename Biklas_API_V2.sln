@@ -5,7 +5,11 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biklas_API_V2", "Biklas_API_V2\Biklas_API_V2.csproj", "{DC1D3337-A585-4D93-8771-FAEF73761AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadorServicio", "..\Librerias\Encriptador\EncriptadorServicio.csproj", "{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadorRutaServicio", "CalculadorRutaServicio\CalculadorRutaServicio.csproj", "{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunicadorCorreoServicio", "ComunicadorCorreoServicio\ComunicadorCorreoServicio.csproj", "{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadorServicio", "EncriptadorServicio\EncriptadorServicio.csproj", "{E0DB2E45-18F9-4B7B-8097-560F68226766}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,18 @@ Global
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

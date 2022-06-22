@@ -1,12 +1,8 @@
-﻿using Biklas_API_V2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using EncriptadorServicio;
 using System.Net;
 using System.Net.Mail;
-using System.Web;
 
-namespace Biklas_API_V2.Services
+namespace ComunicadorCorreoServicio
 {
     public class ComunicadorCorreo : IComunicadorCorreo
     {
@@ -16,17 +12,20 @@ namespace Biklas_API_V2.Services
             _encriptador = encriptador;
         }
 
-        public void EnviarCorreoRecuperacionContra(Usuarios usr)
+        public void EnviarCorreoRecuperacionContra(string emailDest, 
+            string contraDest, 
+            string emailOrig, 
+            string contraOrig)
         {
             // Preparamos dirección, contraseña y contenido del correo
-            string direcc = usr.CorreoElectronico;
-            string contra = _encriptador.Desencriptar(usr.Contraseña, _encriptador.Llave);
-            string contCorreo = PrepContRecuperaContra(contra);
+            string direcc = emailDest;
+            contraDest = _encriptador.Desencriptar(contraDest, _encriptador.Llave);
+            string contCorreo = PrepContRecuperaContra(contraDest);
 
             // Preparamos correo electrónico
             MailMessage msg = new MailMessage();
             SmtpClient smtp = new SmtpClient();
-            msg.From = new MailAddress(Credenciales.CORREO_ELECTRONICO_COM);
+            msg.From = new MailAddress(emailOrig);
             msg.To.Add(new MailAddress(direcc));
             msg.Subject = "Servicio de recuperación de contraseña";
             msg.IsBodyHtml = true; //to make message body as html  
@@ -38,7 +37,7 @@ namespace Biklas_API_V2.Services
             smtp.Host = "smtp.gmail.com"; //for gmail host  
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new NetworkCredential(Credenciales.CORREO_ELECTRONICO_COM, Credenciales.CONTRA_CORREO_ELECTRONICO_COM);
+            smtp.Credentials = new NetworkCredential(emailOrig, contraOrig);
 
             // Enviamos correo
             smtp.Send(msg);

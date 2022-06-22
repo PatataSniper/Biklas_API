@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biklas_API_V2.Services
+namespace CalculadorRutaServicio
 {
     public interface ICalculadorRuta
     {

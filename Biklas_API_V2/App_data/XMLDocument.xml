@@ -508,7 +508,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,Biklas_API_V2.Services.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,EncriptadorServicio.IEncriptador)">
             <summary>
             Validamos que la contraseña recibida como parámetro, sea igual a la contraseña
             del usuario
@@ -526,7 +526,7 @@
             <param name="idUsuario">El id del usuario especificado</param>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(Biklas_API_V2.Services.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(EncriptadorServicio.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos. Utilizado durante creación de entidad
@@ -534,20 +534,13 @@
             <param name="encriptador">Servicio de encriptación utilizado para encriptar
             la contraseña del usuario</param>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(Biklas_API_V2.Services.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(EncriptadorServicio.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos
             </summary>
             <param name="encriptador">Servicio de encriptación utilizado para encriptar
             la contraseña del usuario</param>
-        </member>
-        <member name="M:Biklas_API_V2.Services.ComunicadorCorreo.PrepContRecuperaContra(System.String)">
-            <summary>
-            Prepara el contenido del correo de recuperación de contraseña
-            </summary>
-            <param name="contra"></param>
-            <returns></returns>
         </member>
     </members>
 </doc>
