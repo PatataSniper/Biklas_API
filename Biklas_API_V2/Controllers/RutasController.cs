@@ -8,12 +8,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Windows;
 using Biklas_API_V2.Models;
+using Biklas_API_V2.Services;
 
 namespace Biklas_API_V2.Controllers
 {
     public class RutasController : BKBaseApiController
     {
+        private readonly ICalculadorRuta _calculadorRuta;
+
+        public RutasController(ICalculadorRuta calculadorRuta)
+        {
+            this._calculadorRuta = calculadorRuta;
+        }
+
         [HttpGet]
         public IHttpActionResult ObtenerRutasRelacionadas(int idUsuario)
         {
@@ -22,7 +31,7 @@ namespace Biklas_API_V2.Controllers
                 // Obtenemos al usuario de la base de datos
                 Usuarios usr = db.Usuarios.Find(idUsuario);
 
-                if(usr == null)
+                if (usr == null)
                 {
                     throw new Exception("Usuario no existe en la base de datos");
                 }
@@ -44,6 +53,20 @@ namespace Biklas_API_V2.Controllers
             {
                 return InternalServerError(ex);
             }
+        }
+
+        [HttpGet]
+        public IHttpActionResult ObtenerRutaOptima(decimal xIni, decimal yIni, decimal xFin, decimal yFin)
+        {
+            this._calculadorRuta.CalcularRutaOptima(xIni, yIni, xFin, yFin);
+            return Ok(new
+            {
+                coords = new List<Point>()
+                {
+                    new Point((double)xIni, (double)yIni),
+                    new Point((double)xFin, (double)yFin)
+                }
+            });
         }
 
         // PUT: api/Rutas/5

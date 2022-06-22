@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31229.75
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biklas_API_V2", "Biklas_API_V2\Biklas_API_V2.csproj", "{DC1D3337-A585-4D93-8771-FAEF73761AE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadorServicio", "..\Librerias\Encriptador\EncriptadorServicio.csproj", "{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,11 +17,16 @@ Global
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8964AB-7DFC-44E2-AF37-7DA561527BA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8A42C288-DFC6-4B3B-A6C6-FE16C1313B1A}
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

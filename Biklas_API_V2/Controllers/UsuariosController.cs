@@ -11,6 +11,15 @@ namespace Biklas_API_V2.Controllers
 {
     public class UsuariosController : BKBaseApiController
     {
+        private readonly IComunicadorCorreo _comunicadorCorreo;
+        private readonly IEncriptador _encriptador;
+
+        public UsuariosController(IComunicadorCorreo comunicadorCorreo, IEncriptador encriptador)
+        {
+            this._comunicadorCorreo = comunicadorCorreo;
+            this._encriptador = encriptador;
+        }
+
         // GET api/<controller>
         /// <summary>
         /// Devuelve al cliente la lista de usuarios almacenados en la BD.
@@ -93,7 +102,8 @@ namespace Biklas_API_V2.Controllers
             try
             {
                 // Normalizamos información de creación de usuario
-                nuevoUsuario.NormalizarDatosCreacion(db);
+                nuevoUsuario.Db = db;
+                nuevoUsuario.NormalizarDatosCreacion(_encriptador);
                 db.Usuarios.Add(nuevoUsuario);
 
                 // Iniciamos proceso de guardado en BD
@@ -142,7 +152,7 @@ namespace Biklas_API_V2.Controllers
                 if (usuario == null) throw new Exception("Usuario no existe en la base de datos");
 
                 // El usuario existe, validamos la contraseña
-                if (usuario.ValidarContra(contra))
+                if (usuario.ValidarContra(contra, _encriptador))
                 {
                     // Contraseña válida, éxito en el inicio de sesión, devolvemos información del usuario
                     return Json(new
@@ -185,7 +195,7 @@ namespace Biklas_API_V2.Controllers
                 }
 
                 // Enviamos correo de recuperación de contraseña al usuario
-                ComunicadorCorreo.EnviarCorreoRecuperacionContra(usr);
+                _comunicadorCorreo.EnviarCorreoRecuperacionContra(usr);
                 return Json(true);
             }
             catch (Exception ex)

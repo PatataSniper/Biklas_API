@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Biklas_API_V2.Services
 {
-    public static class Encriptador
+    public class Encriptador : IEncriptador
     {
         // Obtenido gracias al código de CraigTP en https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp#_=_
         // This constant is used to determine the keysize of the encryption algorithm in bits.
@@ -18,16 +18,16 @@ namespace Biklas_API_V2.Services
         // This constant determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 1000;
 
-        public static string Llave => "bkPassPhrase";
+        public string Llave => "bkPassPhrase";
 
-        public static string Encrypt(string plainText, string passPhrase)
+        public string Encriptar(string textoPlano, string llave)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
             // so that the same Salt and IV values can be used when decrypting.  
             var saltStringBytes = Generate256BitsOfRandomEntropy();
             var ivStringBytes = Generate256BitsOfRandomEntropy();
-            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
+            var plainTextBytes = Encoding.UTF8.GetBytes(textoPlano);
+            using (var password = new Rfc2898DeriveBytes(llave, saltStringBytes, DerivationIterations))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = new RijndaelManaged())
@@ -57,11 +57,11 @@ namespace Biklas_API_V2.Services
             }
         }
 
-        public static string Decrypt(string cipherText, string passPhrase)
+        public string Desencriptar(string textoCifr, string llave)
         {
             // Get the complete stream of bytes that represent:
             // [32 bytes of Salt] + [32 bytes of IV] + [n bytes of CipherText]
-            var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(cipherText);
+            var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(textoCifr);
             // Get the saltbytes by extracting the first 32 bytes from the supplied cipherText bytes.
             var saltStringBytes = cipherTextBytesWithSaltAndIv.Take(Keysize / 8).ToArray();
             // Get the IV bytes by extracting the next 32 bytes from the supplied cipherText bytes.
@@ -69,7 +69,7 @@ namespace Biklas_API_V2.Services
             // Get the actual cipher text bytes by removing the first 64 bytes from the cipherText string.
             var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((Keysize / 8) * 2).Take(cipherTextBytesWithSaltAndIv.Length - ((Keysize / 8) * 2)).ToArray();
 
-            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
+            using (var password = new Rfc2898DeriveBytes(llave, saltStringBytes, DerivationIterations))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = new RijndaelManaged())
