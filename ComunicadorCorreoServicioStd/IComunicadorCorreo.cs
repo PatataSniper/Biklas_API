@@ -1,6 +1,6 @@
 ﻿
 
-namespace ComunicadorCorreoServicio
+namespace ComunicadorCorreoServicioStd
 {
     public interface IComunicadorCorreo
     {

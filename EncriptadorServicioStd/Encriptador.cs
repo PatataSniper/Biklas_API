@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace EncriptadorServicio
+namespace EncriptadorServicioStd
 {
     public class Encriptador : IEncriptador
     {

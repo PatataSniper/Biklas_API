@@ -1,8 +1,8 @@
-﻿using EncriptadorServicio;
+﻿using EncriptadorServicioStd;
 using System.Net;
 using System.Net.Mail;
 
-namespace ComunicadorCorreoServicio
+namespace ComunicadorCorreoServicioStd
 {
     public class ComunicadorCorreo : IComunicadorCorreo
     {

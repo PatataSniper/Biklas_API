@@ -48,6 +48,15 @@
     <DocumentationFile>App_data\XMLDocument.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CalculadorRutaServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CalculadorRutaServicioStd.1.0.1\lib\netstandard2.0\CalculadorRutaServicioStd.dll</HintPath>
+    </Reference>
+    <Reference Include="ComunicadorCorreoServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ComunicadorCorreoServicioStd.1.0.1\lib\netstandard2.0\ComunicadorCorreoServicioStd.dll</HintPath>
+    </Reference>
+    <Reference Include="EncriptadorServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EncriptadorServicioStd.1.0.1\lib\netstandard2.0\EncriptadorServicioStd.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -63,9 +72,29 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.Process, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.Process.4.3.0\lib\net461\System.Diagnostics.Process.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
@@ -370,20 +399,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CalculadorRutaServicio\CalculadorRutaServicio.csproj">
-      <Project>{f23b59ee-7f2c-4591-a8f6-bdedede276f0}</Project>
-      <Name>CalculadorRutaServicio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ComunicadorCorreoServicio\ComunicadorCorreoServicio.csproj">
-      <Project>{2197a212-6cc4-4961-a7d8-8f54ee6b78e1}</Project>
-      <Name>ComunicadorCorreoServicio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EncriptadorServicio\EncriptadorServicio.csproj">
-      <Project>{e0db2e45-18f9-4b7b-8097-560f68226766}</Project>
-      <Name>EncriptadorServicio</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

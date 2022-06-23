@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biklas_API_V2", "Biklas_API_V2\Biklas_API_V2.csproj", "{DC1D3337-A585-4D93-8771-FAEF73761AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculadorRutaServicio", "CalculadorRutaServicio\CalculadorRutaServicio.csproj", "{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculadorRutaServicioStd", "CalculadorRutaServicioStd\CalculadorRutaServicioStd.csproj", "{99452BDF-1236-49D9-8ACA-D284A485B96E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunicadorCorreoServicio", "ComunicadorCorreoServicio\ComunicadorCorreoServicio.csproj", "{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComunicadorCorreoServicioStd", "ComunicadorCorreoServicioStd\ComunicadorCorreoServicioStd.csproj", "{9DB0A0D0-8C13-48EC-B374-80833A7ADA77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadorServicio", "EncriptadorServicio\EncriptadorServicio.csproj", "{E0DB2E45-18F9-4B7B-8097-560F68226766}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncriptadorServicioStd", "EncriptadorServicioStd\EncriptadorServicioStd.csproj", "{5BD8A8D6-3829-4892-B36D-12299528BDC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC1D3337-A585-4D93-8771-FAEF73761AE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F23B59EE-7F2C-4591-A8F6-BDEDEDE276F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2197A212-6CC4-4961-A7D8-8F54EE6B78E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0DB2E45-18F9-4B7B-8097-560F68226766}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99452BDF-1236-49D9-8ACA-D284A485B96E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99452BDF-1236-49D9-8ACA-D284A485B96E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99452BDF-1236-49D9-8ACA-D284A485B96E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99452BDF-1236-49D9-8ACA-D284A485B96E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB0A0D0-8C13-48EC-B374-80833A7ADA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB0A0D0-8C13-48EC-B374-80833A7ADA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB0A0D0-8C13-48EC-B374-80833A7ADA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB0A0D0-8C13-48EC-B374-80833A7ADA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BD8A8D6-3829-4892-B36D-12299528BDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BD8A8D6-3829-4892-B36D-12299528BDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BD8A8D6-3829-4892-B36D-12299528BDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BD8A8D6-3829-4892-B36D-12299528BDC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

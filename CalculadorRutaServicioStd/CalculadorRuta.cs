@@ -1,11 +1,10 @@
 ﻿using System;
 using OsmSharp.Streams;
-using System.Linq;
 using System.IO;
 using OsmSharp;
 using System.Diagnostics;
 
-namespace CalculadorRutaServicio
+namespace CalculadorRutaServicioStd
 {
     public class CalculadorRuta : ICalculadorRuta
     {
@@ -17,7 +16,7 @@ namespace CalculadorRutaServicio
                 PBFOsmStreamSource source = new PBFOsmStreamSource(fStream);
                 foreach (OsmGeo element in source)
                 {
-                    System.Diagnostics.Debug.WriteLine(element.ToString());
+                    Debug.WriteLine(element.ToString());
                 }
             }
         }

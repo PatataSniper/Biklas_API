@@ -1,6 +1,6 @@
 ﻿
 
-namespace EncriptadorServicio
+namespace EncriptadorServicioStd
 {
     public interface IEncriptador
     {
