@@ -17,8 +17,8 @@ namespace Biklas_API_V2.Controllers
 
         public UsuariosController(IComunicadorCorreo comunicadorCorreo, IEncriptador encriptador)
         {
-            this._comunicadorCorreo = comunicadorCorreo;
-            this._encriptador = encriptador;
+            _comunicadorCorreo = comunicadorCorreo;
+            _encriptador = encriptador;
         }
 
         // GET api/<controller>

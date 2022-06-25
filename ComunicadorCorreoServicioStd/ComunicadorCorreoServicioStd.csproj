@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EncriptadorServicioStd" Version="1.0.1" />
+    <ProjectReference Include="..\EncriptadorServicioStd\EncriptadorServicioStd.csproj" />
   </ItemGroup>
 
 </Project>

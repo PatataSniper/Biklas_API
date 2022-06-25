@@ -48,15 +48,6 @@
     <DocumentationFile>App_data\XMLDocument.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CalculadorRutaServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CalculadorRutaServicioStd.1.0.1\lib\netstandard2.0\CalculadorRutaServicioStd.dll</HintPath>
-    </Reference>
-    <Reference Include="ComunicadorCorreoServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ComunicadorCorreoServicioStd.1.0.1\lib\netstandard2.0\ComunicadorCorreoServicioStd.dll</HintPath>
-    </Reference>
-    <Reference Include="EncriptadorServicioStd, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EncriptadorServicioStd.1.0.1\lib\netstandard2.0\EncriptadorServicioStd.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,6 +57,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp, Version=6.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OsmSharp.6.2.0\lib\net45\OsmSharp.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net, Version=2.3.7.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
       <HintPath>..\packages\protobuf-net.2.3.7\lib\net40\protobuf-net.dll</HintPath>
@@ -284,6 +278,12 @@
       <DependentUpon>BiklasModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CalculadorRuta.cs" />
+    <Compile Include="Services\ComunicadorCorreo.cs" />
+    <Compile Include="Services\Encriptador.cs" />
+    <Compile Include="Services\ICalculadorRuta.cs" />
+    <Compile Include="Services\IComunicadorCorreo.cs" />
+    <Compile Include="Services\IEncriptador.cs" />
     <Compile Include="UnityResolver.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -335,6 +335,9 @@
     </EntityDeploy>
     <Content Include="Models\BiklasModel.edmx.diagram">
       <DependentUpon>BiklasModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="..\.editorconfig">
+      <Link>.editorconfig</Link>
     </Content>
     <None Include="Properties\PublishProfiles\BiklasAPI - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

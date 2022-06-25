@@ -20,7 +20,7 @@ namespace Biklas_API_V2.Controllers
 
         public RutasController(ICalculadorRuta calculadorRuta)
         {
-            this._calculadorRuta = calculadorRuta;
+            _calculadorRuta = calculadorRuta;
         }
 
         [HttpGet]
@@ -58,13 +58,13 @@ namespace Biklas_API_V2.Controllers
         [HttpGet]
         public IHttpActionResult ObtenerRutaOptima(decimal xIni, decimal yIni, decimal xFin, decimal yFin)
         {
-            this._calculadorRuta.CalcularRutaOptima(xIni, yIni, xFin, yFin);
+            Rutas ruta = _calculadorRuta.CalcularRutaOptima(xIni, yIni, xFin, yFin);
             return Ok(new
             {
-                coords = new List<Point>()
+                coords = new[]
                 {
-                    new Point((double)xIni, (double)yIni),
-                    new Point((double)xFin, (double)yFin)
+                    new { lat = xIni, lng = yIni },
+                    new { lat = xFin, lng = yFin }
                 }
             });
         }

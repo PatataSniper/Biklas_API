@@ -508,7 +508,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,EncriptadorServicio.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,EncriptadorServicioStd.IEncriptador)">
             <summary>
             Validamos que la contraseña recibida como parámetro, sea igual a la contraseña
             del usuario
@@ -526,7 +526,7 @@
             <param name="idUsuario">El id del usuario especificado</param>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(EncriptadorServicio.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(EncriptadorServicioStd.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos. Utilizado durante creación de entidad
@@ -534,7 +534,7 @@
             <param name="encriptador">Servicio de encriptación utilizado para encriptar
             la contraseña del usuario</param>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(EncriptadorServicio.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(EncriptadorServicioStd.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos
