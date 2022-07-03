@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using System.Windows;
 using Biklas_API_V2.Models;
 using CalculadorRutaServicio;
+using Itinero;
 
 namespace Biklas_API_V2.Controllers
 {
@@ -56,17 +57,10 @@ namespace Biklas_API_V2.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult ObtenerRutaOptima(decimal xIni, decimal yIni, decimal xFin, decimal yFin)
+        public IHttpActionResult ObtenerRutaOptima(double xIni, double yIni, double xFin, double yFin)
         {
-            Rutas ruta = _calculadorRuta.CalcularRutaOptima(xIni, yIni, xFin, yFin);
-            return Ok(new
-            {
-                coords = new[]
-                {
-                    new { lat = xIni, lng = yIni },
-                    new { lat = xFin, lng = yFin }
-                }
-            });
+            Route ruta = _calculadorRuta.CalcularRutaOptima(new Point(xIni, yIni), new Point(xFin, yFin));
+            return Ok(new { shape = ruta.ObtenerFormaRutaGMR() });
         }
 
         // PUT: api/Rutas/5

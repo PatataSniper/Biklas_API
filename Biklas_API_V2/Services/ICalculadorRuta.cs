@@ -1,14 +1,16 @@
 ﻿using Biklas_API_V2.Models;
+using Itinero;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CalculadorRutaServicio
 {
     public interface ICalculadorRuta
     {
-        Rutas CalcularRutaOptima(decimal xIni, decimal yIni, decimal xFin, decimal yFin);
+        Route CalcularRutaOptima(Point ini, Point fin);
     }
 }

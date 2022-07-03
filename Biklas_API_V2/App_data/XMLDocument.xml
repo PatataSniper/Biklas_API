@@ -502,13 +502,20 @@
             <param name="contra">La contraseña del usuario</param>
             <returns>Información del usuario existente en la BD</returns>
         </member>
+        <member name="M:Biklas_API_V2.Models.Rutas.#ctor(Itinero.Route)">
+            <summary>
+            Constructor que genera un objeto de ruta utilizable en el proyecto Biklas_API 
+            a partir de un objeto 'Itinero.Route'
+            </summary>
+            <param name="route"></param>
+        </member>
         <member name="M:Biklas_API_V2.Models.Rutas.Coordenadas">
             <summary>
             Devuelve el conjunto de cordenadas (x,y) que describen la ruta
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,EncriptadorServicioStd.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.ValidarContra(System.String,EncriptadorServicio.IEncriptador)">
             <summary>
             Validamos que la contraseña recibida como parámetro, sea igual a la contraseña
             del usuario
@@ -526,7 +533,7 @@
             <param name="idUsuario">El id del usuario especificado</param>
             <returns></returns>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(EncriptadorServicioStd.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatosCreacion(EncriptadorServicio.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos. Utilizado durante creación de entidad
@@ -534,13 +541,28 @@
             <param name="encriptador">Servicio de encriptación utilizado para encriptar
             la contraseña del usuario</param>
         </member>
-        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(EncriptadorServicioStd.IEncriptador)">
+        <member name="M:Biklas_API_V2.Models.Usuarios.NormalizarDatos(EncriptadorServicio.IEncriptador)">
             <summary>
             Normaliza los datos de la entidad para su posterior almacenamiento en la 
             base de datos
             </summary>
             <param name="encriptador">Servicio de encriptación utilizado para encriptar
             la contraseña del usuario</param>
+        </member>
+        <member name="M:HelpersRoute.ObtenerFormaRutaGMR(Itinero.Route)">
+            <summary>
+            Obtiene un arreglo de coordenadas (ruta) interpretable por un mapa de Google
+            Maps React a partir de un objeto 'Route'
+            </summary>
+            <param name="ruta">Objeto de ruta utilizado como origen de los datos (coordenadas)</param>
+            <returns></returns>
+        </member>
+        <member name="M:ComunicadorCorreoServicio.ComunicadorCorreo.PrepContRecuperaContra(System.String)">
+            <summary>
+            Prepara el contenido del correo de recuperación de contraseña
+            </summary>
+            <param name="contra"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

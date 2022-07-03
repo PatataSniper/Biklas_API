@@ -2,16 +2,26 @@
 
 namespace Biklas_API_V2.Models
 {
-    using System;
+    using Itinero;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Web;
-    using Biklas_API_V2.Models;
-    using System.Collections.Generic;
     using System.Windows;
 
     public partial class Rutas
     {
+        /// <summary>
+        /// Constructor que genera un objeto de ruta utilizable en el proyecto Biklas_API 
+        /// a partir de un objeto 'Itinero.Route'
+        /// </summary>
+        /// <param name="route"></param>
+        public Rutas(Route route)
+        {
+            //foreach (var coord in route.Shape)
+            //{
+            //    this.Coordenadas.Add(new Point((double)coord.Latitude, (double)coord.Longitude));
+            //}
+        }
+
         /// <summary>
         /// Devuelve el conjunto de cordenadas (x,y) que describen la ruta
         /// </summary>
@@ -21,7 +31,7 @@ namespace Biklas_API_V2.Models
             List<Point> coordenadas = new List<Point>();
 
             // Obtenemos los segmentos de ruta ordenados por posición
-            Segmentos[] segementos = this.Segmentos.OrderBy(s => s.Posicion).ToArray();
+            Segmentos[] segementos = Segmentos.OrderBy(s => s.Posicion).ToArray();
             
             foreach(Segmentos se in segementos)
             {
