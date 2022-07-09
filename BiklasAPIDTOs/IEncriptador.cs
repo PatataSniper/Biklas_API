@@ -1,6 +1,6 @@
 ﻿
 
-namespace EncriptadorServicioStd
+namespace Biklas_API_DTOs
 {
     public interface IEncriptador
     {

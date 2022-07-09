@@ -1,6 +1,6 @@
 ﻿
 
-namespace ComunicadorCorreoServicioStd
+namespace Biklas_API_DTOs
 {
     public interface IComunicadorCorreo
     {
