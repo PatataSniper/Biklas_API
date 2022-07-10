@@ -1,4 +1,6 @@
 ﻿using Biklas_API_V2.Models;
+using ComunicadorCorreoServicio;
+using EncriptadorServicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,15 @@ namespace Biklas_API_V2.Controllers
 {
     public class UsuariosController : BKBaseApiController
     {
+        private readonly IComunicadorCorreo _comunicadorCorreo;
+        private readonly IEncriptador _encriptador;
+
+        public UsuariosController(IComunicadorCorreo comunicadorCorreo, IEncriptador encriptador)
+        {
+            _comunicadorCorreo = comunicadorCorreo;
+            _encriptador = encriptador;
+        }
+
         // GET api/<controller>
         /// <summary>
         /// Devuelve al cliente la lista de usuarios almacenados en la BD.
@@ -55,7 +66,7 @@ namespace Biklas_API_V2.Controllers
                 kmRecorridos = u.KmRecorridos,
 
                 // Indicamos si es que ambos usuarios son amigos
-                sonAmigos = u.SonAmigos(u.IdUsuario)
+                sonAmigos = u.SonAmigos(idUsuario)
             }));
 
             return Json(result);
@@ -86,8 +97,28 @@ namespace Biklas_API_V2.Controllers
         }
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        [HttpPost]
+        public IHttpActionResult Post(Usuarios nuevoUsuario)
         {
+            try
+            {
+                // Normalizamos información de creación de usuario
+                nuevoUsuario.Db = db;
+                nuevoUsuario.NormalizarDatosCreacion(_encriptador);
+                db.Usuarios.Add(nuevoUsuario);
+
+                // Iniciamos proceso de guardado en BD
+                if (db.SaveChanges() > 0)
+                {
+                    return Json(true);
+                }
+
+                throw new Exception("Error al crear usuario en la base de datos");
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // PUT api/<controller>/5
@@ -122,7 +153,7 @@ namespace Biklas_API_V2.Controllers
                 if (usuario == null) throw new Exception("Usuario no existe en la base de datos");
 
                 // El usuario existe, validamos la contraseña
-                if (usuario.ValidarContra(contra))
+                if (usuario.ValidarContra(contra, _encriptador))
                 {
                     // Contraseña válida, éxito en el inicio de sesión, devolvemos información del usuario
                     return Json(new
@@ -143,6 +174,31 @@ namespace Biklas_API_V2.Controllers
 
                 // Contraseña inválida, fallo en el inicio de sesión
                 throw new Exception("Contraseña incorrecta");
+            }
+            catch (Exception ex)
+            {
+                return Json(new { err = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public IHttpActionResult RecuperarContrasenia(string correo)
+        {
+            try
+            {
+                // Obtenemos el email del usuario relacionado
+                Usuarios usr = db.Usuarios.FirstOrDefault(u => u.CorreoElectronico == correo);
+
+                if(usr == null)
+                {
+                    // Correo no relacionado a ningún usuario en la base de datos
+                    throw new Exception("El correo no pertenece a ningún usuario");
+                }
+
+                // Enviamos correo de recuperación de contraseña al usuario
+                _comunicadorCorreo.EnviarCorreoRecuperacionContra(usr.CorreoElectronico, usr.Contraseña,
+                    Credenciales.CORREO_ELECTRONICO_COM, Credenciales.CONTRA_CORREO_ELECTRONICO_COM);
+                return Json(true);
             }
             catch (Exception ex)
             {
